@@ -8,6 +8,9 @@
 import UIKit
 
 class IconsCollectionViewCell: UICollectionViewCell {
+    
+    static let reuseID = "IconsCollectionViewCell"
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .gray

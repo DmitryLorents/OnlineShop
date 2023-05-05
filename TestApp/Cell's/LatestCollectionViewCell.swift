@@ -9,6 +9,7 @@ import UIKit
 
 class LatestCollectionViewCell: UICollectionViewCell {
     
+    static let reuseID = "LatestCollectionViewCell"
     
     override init(frame: CGRect) {
         super.init(frame: frame)

@@ -25,6 +25,11 @@ final class HomeController: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         view.addSubview(collectionView)
+        
+        collectionView.register(IconsCollectionViewCell.self, forCellWithReuseIdentifier: IconsCollectionViewCell.reuseID)
+        collectionView.register(LatestCollectionViewCell.self, forCellWithReuseIdentifier: LatestCollectionViewCell.reuseID)
+        collectionView.register(FlashSaleCollectionViewCell.self, forCellWithReuseIdentifier: FlashSaleCollectionViewCell.reuseID)
+        collectionView.register(BrandsCollectionViewCell.self, forCellWithReuseIdentifier: BrandsCollectionViewCell.reuseID)
     }
     
     private func setupConstraints() {
@@ -53,22 +58,87 @@ final class HomeController: UIViewController {
         
     }
     private func createIconsSection() -> NSCollectionLayoutSection {
-        let section = NSCollectionLayoutSection(group: <#T##NSCollectionLayoutGroup#>)
+        
+        //item
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .absolute(59))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        //group
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .fractionalHeight(1))
+        
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: groupSize,
+            repeatingSubitem: item,
+            count: 6)
+        //section
+        let section = NSCollectionLayoutSection(group: group)
         return section
     }
     
     private func createLatestSection() -> NSCollectionLayoutSection {
-        let section = NSCollectionLayoutSection(group: <#T##NSCollectionLayoutGroup#>)
+        //item
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .absolute(59))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        //group
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .fractionalHeight(1))
+        
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: groupSize,
+            repeatingSubitem: item,
+            count: 6)
+        //section
+        let section = NSCollectionLayoutSection(group: group)
         return section
     }
     
     private func createFlashSaleSection() -> NSCollectionLayoutSection {
-        let section = NSCollectionLayoutSection(group: <#T##NSCollectionLayoutGroup#>)
+        //item
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .absolute(59))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        //group
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .fractionalHeight(1))
+        
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: groupSize,
+            repeatingSubitem: item,
+            count: 6)
+        //section
+        let section = NSCollectionLayoutSection(group: group)
         return section
     }
     
     private func createBrandsSection() -> NSCollectionLayoutSection {
-        let section = NSCollectionLayoutSection(group: <#T##NSCollectionLayoutGroup#>)
+        //item
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .absolute(59))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        //group
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .fractionalHeight(1))
+        
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: groupSize,
+            repeatingSubitem: item,
+            count: 6)
+        //section
+        let section = NSCollectionLayoutSection(group: group)
         return section
     }
 
@@ -81,7 +151,7 @@ extension HomeController: UICollectionViewDelegate {
 extension HomeController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        3
+        4
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -91,13 +161,17 @@ extension HomeController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case SectionType.iconSection.rawValue:
-            return IconsCollectionViewCell()
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: IconsCollectionViewCell.reuseID, for: indexPath)
+            return cell
         case SectionType.latestSection.rawValue:
-            return LatestCollectionViewCell()
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LatestCollectionViewCell.reuseID, for: indexPath)
+            return cell
         case SectionType.flashSale.rawValue:
-            return FlashSaleCollectionViewCell()
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FlashSaleCollectionViewCell.reuseID, for: indexPath)
+               return cell
         case SectionType.brands.rawValue:
-            return BrandsCollectionViewCell()
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BrandsCollectionViewCell.reuseID, for: indexPath)
+               return cell
         default:
             return UICollectionViewCell()
         }

@@ -9,6 +9,8 @@ import UIKit
 
 class FlashSaleCollectionViewCell: UICollectionViewCell {
     
+    static let reuseID = "FlashSaleCollectionViewCell"
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .green

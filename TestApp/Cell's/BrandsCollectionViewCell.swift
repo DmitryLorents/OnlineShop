@@ -9,6 +9,8 @@ import UIKit
 
 class BrandsCollectionViewCell: UICollectionViewCell {
     
+    static let reuseID = "BrandsCollectionViewCell"
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .blue
