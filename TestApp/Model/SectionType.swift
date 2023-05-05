@@ -8,13 +8,9 @@
 import Foundation
 
 enum SectionType: Int {
-case latestSection = 0
-case flashSale = 1
-case brands = 2
+case iconSection
+case latestSection
+case flashSale
+case brands
     
-var number: Int {
-       
-            return self.rawValue
-
-    }
 }

@@ -38,6 +38,8 @@ final class HomeController: UIViewController {
     private func createCompositionalLayout() -> UICollectionViewCompositionalLayout {
         let layout = UICollectionViewCompositionalLayout { sectionNumber, layoutEnviroment in
             switch sectionNumber {
+            case SectionType.iconSection.rawValue:
+                return self.createIconsSection()
             case SectionType.latestSection.rawValue:
                 return self.createLatestSection()
             case SectionType.flashSale.rawValue:
@@ -50,7 +52,10 @@ final class HomeController: UIViewController {
         return layout
         
     }
-    
+    private func createIconsSection() -> NSCollectionLayoutSection {
+        let section = NSCollectionLayoutSection(group: <#T##NSCollectionLayoutGroup#>)
+        return section
+    }
     
     private func createLatestSection() -> NSCollectionLayoutSection {
         let section = NSCollectionLayoutSection(group: <#T##NSCollectionLayoutGroup#>)
@@ -85,11 +90,13 @@ extension HomeController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
-        case 0:
+        case SectionType.iconSection.rawValue:
+            return IconsCollectionViewCell()
+        case SectionType.latestSection.rawValue:
             return LatestCollectionViewCell()
-        case 1:
+        case SectionType.flashSale.rawValue:
             return FlashSaleCollectionViewCell()
-        case 2:
+        case SectionType.brands.rawValue:
             return BrandsCollectionViewCell()
         default:
             return UICollectionViewCell()
