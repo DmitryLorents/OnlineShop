@@ -7,10 +7,11 @@
 
 import Foundation
 
-enum SectionType: Int {
+enum SectionType: Int, CaseIterable {
 case iconSection
 case latestSection
 case flashSale
 case brands
     
 }
+

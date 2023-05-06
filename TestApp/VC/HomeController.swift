@@ -69,7 +69,7 @@ final class HomeController: UIViewController {
         //group
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1/6),
-            heightDimension: .absolute(59))
+            heightDimension: .fractionalWidth(1/6) )
         
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: groupSize,
@@ -80,7 +80,7 @@ final class HomeController: UIViewController {
         //section
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .continuous
-       
+        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0)
         return section
     }
     
@@ -88,14 +88,14 @@ final class HomeController: UIViewController {
         //item
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
-            heightDimension: .absolute(149))
+            heightDimension: .fractionalHeight(1))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5)
         
         //group
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1/3),
-            heightDimension: .absolute(149))
+            heightDimension: .fractionalWidth(1/3*149/114) )
         
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
            
@@ -119,10 +119,7 @@ final class HomeController: UIViewController {
             widthDimension: .fractionalWidth(1/2),
             heightDimension: .fractionalWidth(1/2*221/174))
         
-        let group = NSCollectionLayoutGroup.horizontal(
-            layoutSize: groupSize,
-            repeatingSubitem: item,
-            count: 2)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
         //section
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0)
@@ -143,10 +140,8 @@ final class HomeController: UIViewController {
             widthDimension: .fractionalWidth(1/4),
             heightDimension: .fractionalWidth(1/4))
         
-        let group = NSCollectionLayoutGroup.horizontal(
-            layoutSize: groupSize,
-            repeatingSubitem: item,
-            count: 4)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        
         //section
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0)
@@ -163,11 +158,11 @@ extension HomeController: UICollectionViewDelegate {
 extension HomeController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        4
+        SectionType.allCases.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+      10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
