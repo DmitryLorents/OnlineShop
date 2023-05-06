@@ -14,7 +14,7 @@ final class HomeController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .primaryBackground
         setupOutlets()
         setupConstraints()
     }
@@ -22,7 +22,7 @@ final class HomeController: UIViewController {
     private func setupOutlets() {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: self.createCompositionalLayout() )
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .yellow
+        collectionView.backgroundColor = .none
         collectionView.delegate = self
         collectionView.dataSource = self
         view.addSubview(collectionView)

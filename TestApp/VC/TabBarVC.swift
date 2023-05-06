@@ -12,7 +12,7 @@ class TabBarVC: UITabBarController {
     fileprivate func setTabBar() {
 
         view.backgroundColor = .white
-        let homeVC = HomeController()
+        let homeVC = UINavigationController(rootViewController: HomeController() )
         let homeItem = UITabBarItem(title: nil, image: UIImage(named: "homeIcon"), selectedImage: UIImage(named: "homeIconActive")?.withRenderingMode(.alwaysOriginal))
         homeVC.tabBarItem = homeItem
         
