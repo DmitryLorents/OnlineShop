@@ -14,6 +14,10 @@ class FlashSaleCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .green
+        layer.cornerRadius = 10
+        clipsToBounds = true
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.black.cgColor
     }
     
     required init?(coder: NSCoder) {
