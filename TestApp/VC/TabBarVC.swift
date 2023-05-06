@@ -11,7 +11,7 @@ class TabBarVC: UITabBarController {
     
     fileprivate func setTabBar() {
 
-        view.backgroundColor = .white
+        tabBar.backgroundColor = .white
         let homeVC = UINavigationController(rootViewController: HomeController() )
         let homeItem = UITabBarItem(title: nil, image: UIImage(named: "homeIcon"), selectedImage: UIImage(named: "homeIconActive")?.withRenderingMode(.alwaysOriginal))
         homeVC.tabBarItem = homeItem
@@ -37,6 +37,12 @@ class TabBarVC: UITabBarController {
         personVC.tabBarItem = personItem
         
         setViewControllers([homeVC, hurtVC, cartVC,noticetVC,personVC], animated: true)
+        tabBar.layer.cornerRadius = 30
+        tabBar.layer.masksToBounds = true
+        tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        
+//        layer.masksToBounds = true
+//        layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
     }
     
     override func viewDidLoad() {
