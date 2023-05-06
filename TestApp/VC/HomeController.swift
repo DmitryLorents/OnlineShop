@@ -14,6 +14,7 @@ final class HomeController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .systemBackground
         setupOutlets()
         setupConstraints()
     }
