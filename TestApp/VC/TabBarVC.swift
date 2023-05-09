@@ -21,19 +21,19 @@ class TabBarVC: UITabBarController {
         
         let hurtVC = UIViewController()
         hurtVC.view.backgroundColor = .lightGray
-        let hurtItem = UITabBarItem(title: nil, image: UIImage(named: "hurtIcon"), selectedImage: UIImage(named: "hurtIcon")?.withRenderingMode(.alwaysOriginal))
+        let hurtItem = UITabBarItem(title: nil, image: UIImage(named: "hurtIcon"), selectedImage: UIImage(named: "hurtIconActive")?.withRenderingMode(.alwaysOriginal))
         hurtItem.imageInsets = UIEdgeInsets(top: standartInset, left: 0, bottom: -standartInset, right: 0)
         hurtVC.tabBarItem = hurtItem
         
         let cartVC = UIViewController()
         cartVC.view.backgroundColor = .lightText
-        let cartItem = UITabBarItem(title: nil, image: UIImage(named: "cartIcon"), selectedImage: UIImage(named: "cartIcon")?.withRenderingMode(.alwaysOriginal))
+        let cartItem = UITabBarItem(title: nil, image: UIImage(named: "cartIcon"), selectedImage: UIImage(named: "cartIconActive")?.withRenderingMode(.alwaysOriginal))
         cartItem.imageInsets = UIEdgeInsets(top: standartInset, left: 0, bottom: -standartInset, right: 0)
         cartVC.tabBarItem = cartItem
         
         let noticetVC = UIViewController()
         noticetVC.view.backgroundColor = .systemGray6
-        let noticeItem = UITabBarItem(title: nil, image: UIImage(named: "noticeIcon"), selectedImage: UIImage(named: "noticeIcon")?.withRenderingMode(.alwaysOriginal))
+        let noticeItem = UITabBarItem(title: nil, image: UIImage(named: "noticeIcon"), selectedImage: UIImage(named: "noticeIconActive")?.withRenderingMode(.alwaysOriginal))
         noticeItem.imageInsets = UIEdgeInsets(top: standartInset, left: 0, bottom: -standartInset, right: 0)
         noticetVC.tabBarItem = noticeItem
         
