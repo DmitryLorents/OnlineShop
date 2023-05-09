@@ -13,7 +13,7 @@ class TabBarVC: UITabBarController {
         
         tabBar.backgroundColor = .white
         tabBar.alpha = 1
-        let homeVC = UINavigationController(rootViewController: HomeController() )
+        let homeVC = HomeController()//UINavigationController(rootViewController: HomeController() )
         let homeItem = UITabBarItem(title: nil, image: UIImage(named: "homeIcon"), selectedImage: UIImage(named: "homeIconActive")?.withRenderingMode(.alwaysOriginal))
         let standartInset: CGFloat = 12
         homeItem.imageInsets = UIEdgeInsets(top: standartInset, left: 0, bottom: -standartInset, right: 0)

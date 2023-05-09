@@ -11,6 +11,13 @@ import SnapKit
 final class HomeController: UIViewController {
     
     var collectionView: UICollectionView!
+    var menuButton: UIButton = {
+        let button  = UIButton(type: .system)
+        let image = UIImage(named: "menuIcon")?.withRenderingMode(.alwaysOriginal)
+        button.setImage(image, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,12 +38,22 @@ final class HomeController: UIViewController {
         collectionView.register(LatestCollectionViewCell.self, forCellWithReuseIdentifier: LatestCollectionViewCell.reuseID)
         collectionView.register(FlashSaleCollectionViewCell.self, forCellWithReuseIdentifier: FlashSaleCollectionViewCell.reuseID)
         collectionView.register(BrandsCollectionViewCell.self, forCellWithReuseIdentifier: BrandsCollectionViewCell.reuseID)
+        
+        view.addSubview(menuButton)
     }
     
     private func setupConstraints() {
         
+        menuButton.snp.makeConstraints { make in
+            make.top.equalTo(53)
+            make.leading.equalTo(15)
+            make.height.equalTo(24)
+            make.width.equalTo(22)
+        }
+        
         collectionView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
+            make.top.equalTo(200)
         }
     }
 //MARK: - Create functions
