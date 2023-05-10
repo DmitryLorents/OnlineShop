@@ -24,8 +24,8 @@ final class HomeController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         let font = UIFont.montserrat(.bold, 20)
-        let attributeFirst: [NSAttributedString.Key: Any] = [NSAttributedString.Key.foregroundColor : UIColor.black, NSAttributedString.Key.font : font]
-        let attributeSecond = [NSAttributedString.Key.foregroundColor: UIColor.buttonColor, NSAttributedString.Key.font: font]
+        let attributeFirst: [NSAttributedString.Key: Any] = [NSAttributedString.Key.foregroundColor : UIColor.black, NSAttributedString.Key.font : font as Any]
+        let attributeSecond: [NSAttributedString.Key: Any] = [NSAttributedString.Key.foregroundColor: UIColor.buttonColor as Any, NSAttributedString.Key.font: font as Any]
         
         let textFirst = NSMutableAttributedString(string: "Trade by ", attributes: attributeFirst)
         let textSecond = NSAttributedString(string: "bata", attributes: attributeSecond)
@@ -33,7 +33,23 @@ final class HomeController: UIViewController {
         label.attributedText = textFirst
         return label
     }()
-    
+    var personImageView: UIImageView = {
+        let imageView  = UIImageView() //tr 47 top 51
+        imageView.image = UIImage(named: "avatar")
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = imageView.bounds.height / 2
+        return imageView
+    }()
+    var locationLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Locationᨆ"
+        label.font = UIFont.poppins(13)
+        label.textColor = .location
+        label.textAlignment = .center
+        return label
+    }()
 
     //MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -58,6 +74,8 @@ final class HomeController: UIViewController {
         
         view.addSubview(menuButton)
         view.addSubview(titleLabel)
+        view.addSubview(personImageView)
+        view.addSubview(locationLabel)
     }
     
     private func setupConstraints() {
@@ -72,6 +90,17 @@ final class HomeController: UIViewController {
         titleLabel.snp.makeConstraints { make in
             make.leading.equalTo(100)
             make.top.equalToSuperview().inset(53)
+        }
+        
+        personImageView.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(51)
+            make.trailing.equalToSuperview().inset(47)
+            make.height.width.equalTo(31)
+        }
+        
+        locationLabel.snp.makeConstraints { make in
+            make.top.equalTo(personImageView.snp.bottom).inset(-7)
+            make.leading.equalTo(personImageView).inset(-17)
         }
         
         collectionView.snp.makeConstraints { make in

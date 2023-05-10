@@ -10,4 +10,5 @@ import UIKit
 extension UIColor {
     static let primaryBackground = UIColor(named: "primaryBackground")
     static let buttonColor = UIColor(named: "buttonColor")
+    static let location = UIColor(named: "location")
 }

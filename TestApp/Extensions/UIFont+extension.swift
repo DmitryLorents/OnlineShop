@@ -20,4 +20,8 @@ extension UIFont {
     static func montserrat(_ type: FontType, _ size: CGFloat) -> UIFont?{
         UIFont(name: type.rawValue, size: size)
     }
+    
+    static func poppins( _ size: CGFloat) -> UIFont?{
+        UIFont(name: "Poppins-Regular", size: size)
+    }
 }
