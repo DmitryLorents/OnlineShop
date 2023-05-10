@@ -10,6 +10,8 @@ import SnapKit
 
 final class HomeController: UIViewController {
     
+    //MARK: - Outlets,  constants and variables
+    
     var collectionView: UICollectionView!
     var menuButton: UIButton = {
         let button  = UIButton(type: .system)
@@ -18,7 +20,22 @@ final class HomeController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    var titleLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        let font = UIFont.montserrat(.bold, 20)
+        let attributeFirst: [NSAttributedString.Key: Any] = [NSAttributedString.Key.foregroundColor : UIColor.black, NSAttributedString.Key.font : font]
+        let attributeSecond = [NSAttributedString.Key.foregroundColor: UIColor.buttonColor, NSAttributedString.Key.font: font]
+        
+        let textFirst = NSMutableAttributedString(string: "Trade by ", attributes: attributeFirst)
+        let textSecond = NSAttributedString(string: "bata", attributes: attributeSecond)
+        textFirst.append(textSecond)
+        label.attributedText = textFirst
+        return label
+    }()
+    
 
+    //MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .primaryBackground
@@ -40,6 +57,7 @@ final class HomeController: UIViewController {
         collectionView.register(BrandsCollectionViewCell.self, forCellWithReuseIdentifier: BrandsCollectionViewCell.reuseID)
         
         view.addSubview(menuButton)
+        view.addSubview(titleLabel)
     }
     
     private func setupConstraints() {
@@ -49,6 +67,11 @@ final class HomeController: UIViewController {
             make.leading.equalTo(15)
             make.height.equalTo(24)
             make.width.equalTo(22)
+        }
+        
+        titleLabel.snp.makeConstraints { make in
+            make.leading.equalTo(100)
+            make.top.equalToSuperview().inset(53)
         }
         
         collectionView.snp.makeConstraints { make in

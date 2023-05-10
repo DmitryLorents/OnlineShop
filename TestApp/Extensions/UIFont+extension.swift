@@ -17,7 +17,7 @@ enum FontType: String {
 }
 
 extension UIFont {
-    static func montserrat(_ type: FontType, _ size: CGFloat) -> UIFont{
-        UIFont(name: type.rawValue, size: size) ?? UIFont.systemFont(ofSize: size)
+    static func montserrat(_ type: FontType, _ size: CGFloat) -> UIFont?{
+        UIFont(name: type.rawValue, size: size)
     }
 }
