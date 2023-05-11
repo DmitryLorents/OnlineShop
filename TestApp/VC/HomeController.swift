@@ -50,6 +50,16 @@ final class HomeController: UIViewController {
         label.textAlignment = .center
         return label
     }()
+    var searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.placeholder = "What are you looking for?"
+        //searchBar.searchBarStyle = .prominent
+        searchBar.setImage(UIImage(systemName: "person.fill"), for: .bookmark, state: .normal)
+        searchBar.showsBookmarkButton = true
+        searchBar.barTintColor = UIColor.searchBarBackground
+        return searchBar
+    }()
 
     //MARK: - viewDidLoad
     override func viewDidLoad() {
@@ -76,6 +86,7 @@ final class HomeController: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(personImageView)
         view.addSubview(locationLabel)
+        view.addSubview(searchBar)
     }
     
     private func setupConstraints() {
@@ -101,6 +112,11 @@ final class HomeController: UIViewController {
         locationLabel.snp.makeConstraints { make in
             make.top.equalTo(personImageView.snp.bottom).inset(-7)
             make.leading.equalTo(personImageView).inset(-17)
+        }
+        
+        searchBar.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview().inset(57)
+            make.top.equalTo(titleLabel.snp.bottom).inset(-34)
         }
         
         collectionView.snp.makeConstraints { make in
