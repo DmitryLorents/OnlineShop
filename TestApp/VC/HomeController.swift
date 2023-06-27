@@ -12,6 +12,7 @@ final class HomeController: UIViewController {
     
     //MARK: - Outlets,  constants and variables
     
+    var latestItemArray: Latest?
     var collectionView: UICollectionView!
     var menuButton: UIButton = {
         let button  = UIButton(type: .system)
